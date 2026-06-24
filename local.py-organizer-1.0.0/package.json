@@ -1,0 +1,48 @@
+{
+  "name": "py-organizer",
+  "displayName": "Python Organizer",
+  "description": "Auto-sorts imports (PEP 8 groups) and class methods (private → public, A-Z) on save.",
+  "version": "1.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "py-organizer.organize",
+        "title": "Python Organizer: Organize current file"
+      }
+    ],
+    "configuration": {
+      "title": "Python Organizer",
+      "properties": {
+        "py-organizer.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to the Python interpreter to use."
+        },
+        "py-organizer.localModules": {
+          "type": "string",
+          "default": "",
+          "description": "Comma-separated list of local module names to treat as first-party (e.g. 'utils,dwdeadline,mypackage'). Auto-detection also runs from project root."
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "py-organizer.organize",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorLangId == python"
+      }
+    ]
+  }
+}
